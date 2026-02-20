@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "eu-west-1"
 }
 
 resource "aws_vpc" "anurag_vpc" {
@@ -14,7 +14,7 @@ resource "aws_subnet" "anurag_subnet" {
   count = 2
   vpc_id                  = aws_vpc.anurag_vpc.id
   cidr_block              = cidrsubnet(aws_vpc.anurag_vpc.cidr_block, 8, count.index)
-  availability_zone       = element(["us-east-2a", "us-east-2b"], count.index)
+  availability_zone       = element(["eu-west-1a", "eu-west-1b"], count.index)
   map_public_ip_on_launch = true
 
   tags = {
